@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "app_function": "app copy.app",
+        "aws_region": "us-east-1",
+        "profile_name": "florial",
+        "project_name": "ataraxis",
+        "runtime": "python3.7",
+        "s3_bucket": "zappa-vwve2uiq8"
+    }
+}

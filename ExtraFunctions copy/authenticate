@@ -1,0 +1,15 @@
+
+Step 1: Import the Cognito header files in an Objective-C bridging header:
+#import <AWSCore/AWSCore.h>
+#import <AWSCognito/AWSCognito.h>
+
+Then initialize the credentials provider:
+
+// Initialize the Amazon Cognito credentials provider
+
+let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+   identityPoolId:"us-east-1:e131a431-e062-489a-a474-be29c1785e84")
+
+let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+
+AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
