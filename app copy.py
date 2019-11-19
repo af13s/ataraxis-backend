@@ -275,29 +275,29 @@ def getAllEvents(timeframe=False):
     #     if "latitude" not in eventobj or "longitude" not in eventobj:
     #         eventobj["latitude"] , eventobj["longitude"] = getPosition(eventobj["EventAddress"])
 
-    temp = []
-    for event in newlist:
-        keyDate = dateutil.parser.parse(event['EventStart'])
-        if keyDate >= datetime.now()-timedelta(hours=2):
-            temp.append(event)
+    # temp = []
+    # for event in newlist:
+    #     keyDate = dateutil.parser.parse(event['EventStart'])
+    #     if keyDate > datetime.now()-timedelta(hours=8):
+    #         temp.append(event)
     
-    newlist = temp
+    # newlist = temp
 
-    if timeframe == 'week':
-        weekLimit = datetime.today()+timedelta(days=7)
-        for i,key in enumerate(newlist):
-            keyDate = dateutil.parser.parse(key['EventStart'])
-            if keyDate > weekLimit:
-                del newlist[i:]
-                break
+    # if timeframe == 'week':
+    #     weekLimit = datetime.today()+timedelta(days=7)
+    #     for i,key in enumerate(newlist):
+    #         keyDate = dateutil.parser.parse(key['EventStart'])
+    #         if keyDate > weekLimit:
+    #             del newlist[i:]
+    #             break
 
-    if timeframe == 'day':
-        dayLimit = datetime.now()+timedelta(hours=12)
-        for i,key in enumerate(newlist):
-            keyDate = dateutil.parser.parse(key['EventStart'])
-            if keyDate > dayLimit:
-                del newlist[i:]
-                break
+    # if timeframe == 'day':
+    #     dayLimit = datetime.now()+timedelta(hours=12)
+    #     for i,key in enumerate(newlist):
+    #         keyDate = dateutil.parser.parse(key['EventStart'])
+    #         if keyDate > dayLimit:
+    #             del newlist[i:]
+    #             break
                 
     resp = Response(response=json.dumps(newlist),content_type="application/json")
 
@@ -335,12 +335,16 @@ def getAllEventsBETA(timeframe=None):
             pass
             # print("no EventAddress using default")
         try:   
-            testdictt["rocket"]["rocket_phone"] = event["phone"]
+            testdictt["rocket"]["rocket_phone"] = event["Phone"]
         except:
             pass
             # print("no phone using default")
         try:   
-            testdictt["rocket"]["rocket_website"] = event["website"]
+            testdictt["rocket"]["rocket_website"] = event["Website"]
+        except:
+            pass
+        try:   
+            testdictt["rocket"]["rocket_name"] = event["HostName"]
         except:
             pass
             # print("no website using default")

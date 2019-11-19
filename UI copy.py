@@ -78,7 +78,7 @@ class inputdialog(QWidget):
       layout.addRow(self.Location_Name)
 
       self.address = QLineEdit()
-      self.address.setPlaceholderText("address")
+      self.address.setPlaceholderText("Address")
       layout.addRow(self.address)
 
 
@@ -88,7 +88,17 @@ class inputdialog(QWidget):
 
       self.img_url = QLineEdit()
       self.img_url.setPlaceholderText("Image Url")
-      layout.addRow(self.img_url)      
+      layout.addRow(self.img_url)
+
+      self.phone = QLineEdit()
+      self.phone.setPlaceholderText("Phone")
+      self.hostname = QLineEdit()
+      self.hostname.setPlaceholderText("Host Name")
+      layout.addRow(self.phone,self.hostname)
+
+      self.eventwebsite = QLineEdit()
+      self.eventwebsite.setPlaceholderText("Event Website")
+      layout.addRow(self.eventwebsite)
 
       self.Description = QPlainTextEdit(self)
       self.Description.setPlaceholderText("Description")
@@ -197,7 +207,10 @@ class inputdialog(QWidget):
             "Longitude": str(longitude),
             # "summary": self.Summary.text().strip(),
             "EventDescription": self.Description.toPlainText().strip().replace("'",""),
-            "ImageUrl" : self.img_url.text().strip()
+            "ImageUrl" : self.img_url.text().strip(),
+            "Phone": self.phone.text().strip(),
+            "HostName": self.hostname.text().strip(),
+            "Website": self.eventwebsite.text().strip()
          }
 
          print(event)
